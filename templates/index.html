@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Informações de Pokémon</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Pesquisa de Pokémon</h5>
+                <form method="post" action="/search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="pokemon_name" placeholder="Nome do Pokémon">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Pesquisar</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            {% if pokemon_name %}
+                <h5>Pokémon Encontrado:</h5>
+                <div class="card" style="width: 18rem;">
+                    {% if pokemon_image %}
+                        <img src="{{ pokemon_image }}" class="card-img-top" alt="{{ pokemon_name }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ pokemon_name }}</h5>
+                        <p class="card-text">Tipo: {{ types|join(', ') }}</p>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
